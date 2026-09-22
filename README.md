@@ -1,4 +1,4 @@
-# GCP Frontend Edge Template
+# GCP Frontend Template
 
 A Terraform orchestrator module that provisions the ingress edge stack for a
 Cloud Run–backed web frontend on GCP by composing official Terraform Registry
