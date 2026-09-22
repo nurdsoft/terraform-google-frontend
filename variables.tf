@@ -14,7 +14,7 @@ variable "region" {
 }
 
 variable "component" {
-  description = "Short name used as a prefix for created resources (e.g. `${component}-armor-policy`)."
+  description = "Short name used as a prefix for created resources. The Cloud Armor policy is named <component>-armor-policy."
   type        = string
   default     = "frontend"
 }
