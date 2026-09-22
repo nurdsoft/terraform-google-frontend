@@ -9,8 +9,8 @@ uptime_check_path    = "/"
 uptime_check_period  = 300
 uptime_check_timeout = 10
 
-enable_waf        = true
-waf_description   = "Frontend WAF - Cloud Armor policy"
+enable_waf      = true
+waf_description = "Frontend WAF - Cloud Armor policy"
 waf_allowed_paths = [
   "/robots.txt",
   "/sitemap*",

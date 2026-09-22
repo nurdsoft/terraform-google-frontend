@@ -18,6 +18,9 @@ module "frontend" {
   uptime_check_period  = var.uptime_check_period
   uptime_check_timeout = var.uptime_check_timeout
 
+  # Feature flags
+  enable_ingress = var.enable_ingress
+
   # Cloud Armor
   enable_waf        = var.enable_waf
   waf_description   = var.waf_description

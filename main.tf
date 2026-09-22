@@ -18,6 +18,7 @@ module "cloud_armor" {
 # HTTP->HTTPS redirect, managed SSL cert, HTTPS forwarding rule, uptime
 # checks, monitoring dashboard.
 module "external_https_lb" {
+  count   = var.enable_ingress ? 1 : 0
   source  = "nurdsoft/lb/google"
   version = "1.0.0"
 

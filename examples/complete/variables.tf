@@ -44,6 +44,12 @@ variable "uptime_check_timeout" {
   default     = 10
 }
 
+variable "enable_ingress" {
+  description = "Enable the external HTTPS load balancer."
+  type        = bool
+  default     = true
+}
+
 variable "enable_waf" {
   description = "Enable Cloud Armor WAF policy."
   type        = bool

@@ -13,8 +13,9 @@ modules for Cloud Armor and the external HTTPS load balancer.
     dashboard.
   - `nurdsoft/cloud-armor/google` — WAF policy attached to the LB backend
     service.
-- Feature flag (`enable_waf`) to enable/disable Cloud Armor while keeping the
-  LB always-on (the LB is the reason this module exists).
+- Feature flags (`enable_ingress`, `enable_waf`) to toggle each submodule
+  independently. `enable_ingress` defaults to true — the LB is the primary
+  reason this module exists.
 - Automatic wiring between submodules — when `enable_waf = true`, the Cloud
   Armor policy is attached to the LB backend service automatically.
 - Re-exports the LB and Cloud Armor outputs that callers typically wire into
@@ -55,6 +56,9 @@ module "frontend" {
   component              = "frontend"
   cloud_run_service_name = "my-frontend"
   customer_domain        = "app.example.com"
+
+  # Feature flags (defaults shown)
+  enable_ingress = true
 
   # Cloud Armor
   enable_waf        = true
@@ -98,6 +102,7 @@ See [`examples/complete`](./examples/complete) for a full working example.
 | uptime_check_path        | Path for the HTTPS uptime check.                                           | `string`       | `/`                                 | no       |
 | uptime_check_period      | Frequency of uptime checks in seconds.                                     | `number`       | `300`                               | no       |
 | uptime_check_timeout     | Timeout for uptime checks in seconds.                                      | `number`       | `10`                                | no       |
+| enable_ingress           | Enable the external HTTPS load balancer.                                   | `bool`         | `true`                              | no       |
 | enable_waf               | Enable Cloud Armor WAF policy and attach to LB.                            | `bool`         | `false`                             | no       |
 | waf_description          | Description on the Cloud Armor policy.                                     | `string`       | `Frontend WAF - Cloud Armor policy` | no       |
 | waf_allowed_paths        | Paths that bypass WAF block rules. `*` suffix = prefix match.              | `list(string)` | `[]`                                | no       |
@@ -106,7 +111,7 @@ See [`examples/complete`](./examples/complete) for a full working example.
 
 | Name                    | Description                                                                    |
 |-------------------------|--------------------------------------------------------------------------------|
-| static_ip_address       | Reserved external IPv4 in front of the LB.                                     |
-| url_map_name            | Main URL map name. Use in log sink filters and alert policy metric filters.    |
-| dashboard_id            | Monitoring dashboard ID. Null when disabled or no customer_domain.             |
-| armor_policy_self_link  | Cloud Armor policy self link. Null when enable_waf is false.                   |
+| static_ip_address       | Reserved external IPv4 in front of the LB. Null when `enable_ingress` is false. |
+| url_map_name            | Main URL map name. Use in log sink filters and alert policy metric filters. Null when `enable_ingress` is false. |
+| dashboard_id            | Monitoring dashboard ID. Null when `enable_ingress` is false, dashboard is disabled, or no customer_domain. |
+| armor_policy_self_link  | Cloud Armor policy self link. Null when `enable_waf` is false.                 |

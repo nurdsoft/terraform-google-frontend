@@ -34,6 +34,12 @@ variable "cloud_run_service_name" {
   type        = string
 }
 
+variable "enable_ingress" {
+  description = "Enable the external HTTPS load balancer (the ingress edge). Default true — the LB is the primary reason this module exists. Set false only if you want a Cloud Armor policy without an LB attached (rare)."
+  type        = bool
+  default     = true
+}
+
 variable "uptime_check_path" {
   description = "Path used by the HTTPS uptime check."
   type        = string
