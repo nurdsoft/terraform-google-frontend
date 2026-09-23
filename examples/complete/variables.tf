@@ -53,7 +53,7 @@ variable "enable_ingress" {
 variable "enable_waf" {
   description = "Enable Cloud Armor WAF policy."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "waf_description" {

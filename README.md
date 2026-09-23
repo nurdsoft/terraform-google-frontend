@@ -103,7 +103,7 @@ See [`examples/complete`](./examples/complete) for a full working example.
 | uptime_check_period      | Frequency of uptime checks in seconds.                                     | `number`       | `300`                               | no       |
 | uptime_check_timeout     | Timeout for uptime checks in seconds.                                      | `number`       | `10`                                | no       |
 | enable_ingress           | Enable the external HTTPS load balancer.                                   | `bool`         | `true`                              | no       |
-| enable_waf               | Enable Cloud Armor WAF policy and attach to LB.                            | `bool`         | `false`                             | no       |
+| enable_waf               | Enable Cloud Armor WAF policy and attach to LB.                            | `bool`         | `true`                              | no       |
 | waf_description          | Description on the Cloud Armor policy.                                     | `string`       | `Frontend WAF - Cloud Armor policy` | no       |
 | waf_allowed_paths        | Paths that bypass WAF block rules. `*` suffix = prefix match.              | `list(string)` | `[]`                                | no       |
 

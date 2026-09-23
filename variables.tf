@@ -65,7 +65,7 @@ variable "uptime_check_timeout" {
 variable "enable_waf" {
   description = "Enable Cloud Armor WAF policy and attach it to the LB backend service."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "waf_description" {
