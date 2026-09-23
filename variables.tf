@@ -24,7 +24,7 @@ variable "component" {
 # -----------------------------------------------------------------------------
 
 variable "customer_domain" {
-  description = "Customer domain name. Leave blank to skip HTTPS setup. e.g. dev.agoapp.net"
+  description = "Customer domain name. Leave blank to skip HTTPS setup. e.g. app.example.com"
   type        = string
   default     = ""
 }
