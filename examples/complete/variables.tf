@@ -15,6 +15,12 @@ variable "component" {
   default     = "frontend"
 }
 
+variable "environment" {
+  description = "Environment label (dev/prod). Stamped on alert-policy user_labels."
+  type        = string
+  default     = "dev"
+}
+
 variable "cloud_run_service_name" {
   description = "Name of the Cloud Run service the LB routes to."
   type        = string
@@ -56,6 +62,18 @@ variable "enable_waf" {
   default     = true
 }
 
+variable "enable_logging" {
+  description = "Create a log bucket and route LB request logs to it."
+  type        = bool
+  default     = true
+}
+
+variable "enable_alerts" {
+  description = "Create Cloud Monitoring alert policies for the frontend edge."
+  type        = bool
+  default     = true
+}
+
 variable "waf_description" {
   description = "Description on the Cloud Armor policy."
   type        = string
@@ -64,6 +82,17 @@ variable "waf_description" {
 
 variable "waf_allowed_paths" {
   description = "Paths that bypass WAF block rules."
+  type        = list(string)
+  default     = []
+}
+
+variable "artifact_registry_repo_id" {
+  description = "Repository ID for the frontend's Artifact Registry Docker repository."
+  type        = string
+}
+
+variable "notification_channels" {
+  description = "List of Cloud Monitoring notification channel IDs to attach to alert policies."
   type        = list(string)
   default     = []
 }

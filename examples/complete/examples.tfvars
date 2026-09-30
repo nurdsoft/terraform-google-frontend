@@ -1,6 +1,7 @@
 project_id             = "your-gcp-project-id"
 region                 = "us-central1"
 component              = "frontend"
+environment            = "dev"
 cloud_run_service_name = "your-cloud-run-service"
 
 customer_domain = "app.example.com"
@@ -14,4 +15,10 @@ waf_description = "Frontend WAF - Cloud Armor policy"
 waf_allowed_paths = [
   "/robots.txt",
   "/sitemap*",
+]
+
+artifact_registry_repo_id = "your-frontend-repo"
+
+notification_channels = [
+  "projects/your-gcp-project-id/notificationChannels/1234567890",
 ]
